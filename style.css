@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #222;
+    color: #fff;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #4caf50;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.col {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+@media only screen and (min-width: 600px) {
+    .col {
+        float: left;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 0 10px;
+        border-radius: 5px;
+        border: 1px solid #444;
+    }
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.input-container label {
+    margin-bottom: 5px;
+    color: #999;
+}
+
+.input-container input[type="text"],
+.button-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    font-size: 16px;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.input-container input[type="text"]:focus,
+.button-container button:focus {
+    background-color: #555;
+    outline: none;
+}
+
+.button-container button {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+    background-color: #3e8e41;
+}

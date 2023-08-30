@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive Form</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Msg Pos - 2º BAvEx</h1>
+        <div class="row">
+            <div class="col">
+                <div class="input-container">
+                    <label for="input1">Anv:</label>
+                    <input type="text" id="input1" placeholder="EXB4001" />
+                </div>
+                <div class="input-container">
+                    <label for="input2">Data:</label>
+                    <input type="text" id="input2" placeholder="06MAIO23" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-container">
+                    <label for="input3">Missão:</label>
+                    <input type="text" id="input3" placeholder="Ap CML" />
+                </div>
+                <div class="input-container">
+                    <label for="input4">Tripulação:</label>
+                    <input type="text" id="input4" placeholder="Cap Thiago Campos,..." />
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-container">
+                    <label for="input5">HV P1:</label>
+                    <input type="text" id="input5" placeholder="2.3" />
+                </div>
+                <div class="input-container">
+                    <label for="input6">HV P2:</label>
+                    <input type="text" id="input6" placeholder="1.9" />
+                </div>
+                <div class="input-container">
+                    <label for="input7">Abastecimento:</label>
+                    <input type="text" id="input7" placeholder="765 L/Kg" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-container">
+                    <label for="input8">TSN Célula:</label>
+                    <input type="text" id="input8" placeholder="3142,6" />
+                </div>
+                <div class="input-container">
+                    <label for="input9">TSN GTM:</label>
+                    <input type="text" id="input9" placeholder="768" />
+                </div>
+                <div class="input-container">
+                    <label for="input10">Potencial Anv:</label>
+                    <input type="text" id="input10" placeholder="5.6" />
+                </div>
+                <div class="input-container">
+                    <label for="input11">Pontencial OMA:</label>
+                    <input type="text" id="input11" placeholder="2.1" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-container">
+                    <label for="input12">Local de Pernoite:</label>
+                    <input type="text" id="input12" placeholder="Brasília-DF, CMP" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-container">
+                    <label for="input13">Missões realizadas no dia:</label>
+                    <input type="text" id="input13" placeholder="Infiltração e TAU" />
+                </div>
+                <div class="input-container">
+                    <label for="input14">Missões previstas para o dia seguinte:</label>
+                    <input type="text" id="input14" placeholder="Alerta" />
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="copyToClipboard()">Copy Text</button>
+        </div>
+    </div>
+    <script>
+        var lastCopiedData = {};
+        function copyToClipboard() {
+            // Concatenate the text inputs
+            var textToCopy =
+                "*Msg Pos " +
+                document.getElementById("input1").value +
+                " - " +
+                document.getElementById("input2").value +
+                "*\n" +
+                "1. Missão: " +
+                document.getElementById("input3").value +
+                "\n" +
+                "2. Tripulação: " +
+                document.getElementById("input4").value +
+                "\n" +
+                "3. HV total do dia: P1: " +
+                document.getElementById("input5").value +
+                " P2: " +
+                document.getElementById("input6").value +
+                "\n" +
+                "4. Potencial da Anv: " +
+                document.getElementById("input10").value +
+                "\n" +
+                "5. Potencial de HV na missão: " +
+                document.getElementById("input11").value +
+                "\n" +
+                "6. TSN Célula: " +
+                document.getElementById("input8").value +
+                "\n" +
+                "7. TSN GTM 1/2: " +
+                document.getElementById("input9").value +
+                "\n" +
+                "8. Local de Pernoite: " +
+                document.getElementById("input12").value +
+                "\n" +
+                "9. Missão(ões) realizada(s) no dia: " +
+                document.getElementById("input13").value +
+                "\n" +
+                "10. Missão(ões) prevista(s) para o dia seguinte: " +
+                document.getElementById("input14").value +
+                "\n" +
+                "11. Abastecimento: " +
+                document.getElementById("input7").value +
+                "\n";
+            // Create a temporary textarea element to hold the text
+            var tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+            tempTextArea.style.position = "fixed";
+            tempTextArea.style.opacity = 0;
+            document.body.appendChild(tempTextArea);
+
+            // Select the text and copy it to clipboard
+            tempTextArea.select();
+            document.execCommand("copy");
+
+            const inputs = Array.from(
+                { length: 14 },
+                (_, index) => `input${index + 1}`
+            );
+            const lastCopiedData = inputs.reduce((acc, input) => {
+                acc[input] = document.getElementById(input).value;
+                return acc;
+            }, {});
+
+            // Remove the temporary textarea element
+            document.body.removeChild(tempTextArea);
+
+            // Save the last Copied area to localstorage
+            localStorage.setItem("lastCopiedData", JSON.stringify(lastCopiedData));
+
+            // Show a message to indicate that the text has been copied
+            alert("Mensagem gerada!");
+        }
+        // Atualizar os placeholders com os valores salvos quando a página é carregada
+        window.onload = function () {
+            // Load preivously saved data
+            var lastCopiedData = JSON.parse(localStorage.getItem("lastCopiedData"));
+            if (lastCopiedData == null) return;
+
+            // Set the values of the inputs
+            const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+            items.forEach((item) => {
+                document.getElementById(`input${item}`).value = lastCopiedData[`input${item}`];
+            });
+        };
+    </script>
+</body>
+
+</html>
