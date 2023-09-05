@@ -17,10 +17,33 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Adicione este estilo em seu arquivo de estilo CSS */
+footer {
+    text-align: center;
+    font-size: 8px;
+    /* Tamanho da fonte menor */
+    margin-top: 10px;
+    /* Espaço superior para separar do conteúdo principal */
+}
+
+
 h1 {
     text-align: center;
     color: #4caf50;
+    font-size: 28px;
+    /* Tamanho da fonte ajustável conforme necessário */
+    margin: 20px 0;
+    /* Espaçamento superior e inferior */
+    text-transform: uppercase;
+    /* Transforma o texto em maiúsculas */
+    letter-spacing: 2px;
+    /* Espaçamento entre letras */
+    font-weight: bold;
+    /* Define o peso da fonte como negrito */
+    -webkit-text-stroke: 2px #000;
+    /* Largura e cor da borda */
 }
+
 
 .row::after {
     content: "";
@@ -52,21 +75,25 @@ h1 {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .input-container label {
     margin-bottom: 5px;
-    color: #999;
+    color: #e2e2e2;
+    font-weight: bold;
 }
 
 .input-container input[type="text"],
+
 .button-container button {
+
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #444;
     font-size: 16px;
-    color: #fff;
+    color: #00ff73;
     transition: background-color 0.3s;
 }
 
@@ -78,11 +105,15 @@ h1 {
 
 .button-container button {
     background-color: #4caf50;
-    color: #fff;
+    color: #3d3d3d;
     cursor: pointer;
+    font-weight: bold;
     transition: background-color 0.3s;
+    transition: box-shadow 0.3s;
 }
 
 .button-container button:hover {
-    background-color: #3e8e41;
+    background-color: #89e963;
+    box-shadow: 0 0 10px #7ebb0d;
+    font-weight: bold;
 }
