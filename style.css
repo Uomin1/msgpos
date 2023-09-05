@@ -31,17 +31,10 @@ h1 {
     text-align: center;
     color: #4caf50;
     font-size: 28px;
-    /* Tamanho da fonte ajustável conforme necessário */
     margin: 20px 0;
-    /* Espaçamento superior e inferior */
     text-transform: uppercase;
-    /* Transforma o texto em maiúsculas */
     letter-spacing: 2px;
-    /* Espaçamento entre letras */
     font-weight: bold;
-    /* Define o peso da fonte como negrito */
-    -webkit-text-stroke: 2px #000;
-    /* Largura e cor da borda */
 }
 
 
